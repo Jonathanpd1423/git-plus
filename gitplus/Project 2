@@ -1,0 +1,130 @@
+char location[10] = {'o','1','2','3','4','5','6','7','8','9'};
+
+int checkwinner();
+void displayboard();
+
+int main()
+{
+int player = 1,i,choice;
+
+char mark;
+do
+{
+displayboard();
+player=(player%2)?1:2;
+
+cout << "Player " << player << ", enter a number: ";
+cin >> choice;
+
+mark=(player == 1) ? 'X' : 'O';
+
+if (choice == 1 && location[1] == '1')
+
+location[1] = mark;
+else if (choice == 2 && location[2] == '2')
+
+location[2] = mark;
+else if (choice == 3 && location[3] == '3')
+
+location[3] = mark;
+else if (choice == 4 && location[4] == '4')
+
+location[4] = mark;
+else if (choice == 5 && location[5] == '5')
+
+location[5] = mark;
+else if (choice == 6 && location[6] == '6')
+
+location[6] = mark;
+else if (choice == 7 && location[7] == '7')
+
+location[7] = mark;
+else if (choice == 8 && location[8] == '8')
+
+location[8] = mark;
+else if (choice == 9 && location[9] == '9')
+
+location[9] = mark;
+else
+{
+cout<<"Invalid move ";
+
+player--;
+cin.ignore();
+cin.get();
+}
+i=checkwinner();
+
+player++;
+}while(i==-1);
+displayboard();
+if(i==1)
+
+cout<<"==>\aPlayer "<<--player<<" win ";
+else
+cout<<"==>\aGame draw";
+
+cin.ignore();
+cin.get();
+return 0;
+}
+
+
+int checkwinner()
+{
+if (location[1] == location[2] && location[2] == location[3])
+
+return 1;
+else if (location[4] == location[5] && location[5] == location[6])
+
+return 1;
+else if (location[7] == location[8] && location[8] == location[9])
+
+return 1;
+else if (location[1] == location[4] && location[4] == location[7])
+
+return 1;
+else if (location[2] == location[5] && location[5] == location[8])
+
+return 1;
+else if (location[3] == location[6] && location[6] == location[9])
+
+return 1;
+else if (location[1] == location[5] && location[5] == location[9])
+
+return 1;
+else if (location[3] == location[5] && location[5] == location[7])
+
+return 1;
+else if (location[1] != '1' && location[2] != '2' && location[3] != '3'
+&& location[4] != '4' && location[5] != '5' && location[6] != '6'
+&& location[7] != '7' && location[8] != '8' && location[9] != '9')
+
+return 0;
+else
+return -1;
+}
+
+void displayboard()
+{
+system("cls");
+cout << "\n\n\tTic Tac Toe\n\n";
+
+cout << "Player 1 (X) - Player 2 (O)" << endl << endl;
+cout << endl;
+
+cout << " | | " << endl;
+cout << " " << location[1] << " | " << location[2] << " | " << location[3] << endl;
+
+cout << "_____|_____|_____" << endl;
+cout << " | | " << endl;
+
+cout << " " << location[4] << " | " << location[5] << " | " << location[6] << endl;
+
+cout << "_____|_____|_____" << endl;
+cout << " | | " << endl;
+
+cout << " " << location[7] << " | " << location[8] << " | " << location[9] << endl;
+
+cout << " | | " << endl << endl;
+}
